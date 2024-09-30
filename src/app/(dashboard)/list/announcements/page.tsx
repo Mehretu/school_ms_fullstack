@@ -2,38 +2,30 @@ import FormModal from "@/components/FormModal"
 import Pagination from "@/components/Pagination"
 import Table from "@/components/Table"
 import TableSearch from "@/components/TableSearch"
-import { assignmentsData, examsData, lessonsData, role} from "@/lib/data"
-import { Form } from "formik"
+import {announcementsData, eventsData, role} from "@/lib/data"
 import Image from "next/image"
 import Link from "next/link"
 
-type Assignment = {
+type Announcement = {
   id:number;
-  subject:string;
+  title:string;
   class:string;
-  teacher:number;
-  dueDate: string;
+  date:string;
+
 }
 
 const columns = [
   {
-    header: "Subject Name", 
-    accessor:"name",
+    header: "Title", 
+    accessor:"title",
   },
   {
     header: "Class", 
-    accessor:"class", 
-
+    accessor:"class",
   },
   {
-    header:"Teacher",
-    accessor:"teacher",
-    className:"hidden md:table-cell",
-
-  },
-  {
-    header:"Due Date",
-    accessor:"dueDate",
+    header:"Date",
+    accessor:"date",
     className:"hidden md:table-cell",
 
   },
@@ -43,24 +35,22 @@ const columns = [
   }
 ]
 
-const AssignmentList = () => {
+const AnnouncementList = () => {
 
-  const renderRow = (item:Assignment) => (
+  const renderRow = (item:Announcement) => (
     <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-lamaPurpleLight">
-      <td className="flex items-center gap-4 p-4">
-      {item.subject}
-      </td>
-      <td >{item.class}</td>
-      <td className="hidden md:table-cell">{item.teacher}</td>
-      <td className="hidden md:table-cell">{item.dueDate}</td>
+      <td className="flex items-center gap-4 p-4">{item.title}</td>
+      <td>{item.class}</td>
+      <td className="hidden md:table-cell">{item.date}</td>
+  
 
 
 
       <td>
         <div className="flex items-center gap-2">
-          <FormModal table="assignment" type="update" data={item}/>
+          <FormModal table="announcement" type="update" data={item}/>
           {role === "admin" && (
-          <FormModal table="assignment" type="delete" id={item.id}/>
+            <FormModal table="announcement" type="delete" id={item.id}/>
           )
             
           }
@@ -74,7 +64,7 @@ const AssignmentList = () => {
     <div className='bg-white p-4 rounded-md flex-1 m-4 mt-0'>
       {/* Top */}
       <div className="flex items-center justify-between">
-        <h1 className="hidden md:block text-lg font-semibold">All Assignments</h1>
+        <h1 className="hidden md:block text-lg font-semibold">All Announcements</h1>
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           <TableSearch/>
           <div className="flex items-center gap-4 self-end">
@@ -85,13 +75,14 @@ const AssignmentList = () => {
               <Image src="/sort.png" alt="" width={14} height={14}/>
             </button>
             {role ==="admin" && (
-              <FormModal table="assignment" type="create"/>
+              <FormModal table="announcement" type="create"/>
+              
           )}
           </div>
         </div>
       </div>
       {/* List */}
-      <Table columns={columns} renderRow={renderRow} data={assignmentsData}/>
+      <Table columns={columns} renderRow={renderRow} data={announcementsData}/>
       {/* Pagination */}
         <Pagination/>
 
@@ -99,4 +90,4 @@ const AssignmentList = () => {
   )
 }
 
-export default AssignmentList
+export default AnnouncementList

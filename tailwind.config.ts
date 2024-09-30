@@ -21,6 +21,16 @@ const config: Config = {
         lamaYellow:"#FAE27C",
         lamaYellowLight:"#FEFCE8"
       }
+
+      // colors: {
+      //   lamaSky: "#CDE4DD",     // Light, refreshing sea-green
+      //   lamaSkyLight: "#EFF7F5", // Softer, almost white green
+      //   lamaPurple: "#FBC4CB",     // Soft blush pink, adding warmth and lightness
+      //   lamaPurpleLight: "#FFF1F2", // Very light pink, nearly white
+      //   lamaYellow: "#D3CDE4",   // Muted lavender with a grey undertone
+      //   lamaYellowLight: "#F5F3FA" // Soft lavender-grey with a subtle hint of purple
+      // }
+      
     },
   },
   plugins: [],
