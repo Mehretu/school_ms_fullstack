@@ -1,5 +1,6 @@
 import Announcements from "@/components/Announcements"
 import BigCalendar from "@/components/BigCalendar"
+import FormModal from "@/components/FormModal"
 import Performance from "@/components/Performance"
 import Image from "next/image"
 import Link from "next/link"
@@ -14,10 +15,35 @@ const SingleTeacherPage = () => {
         {/* User Cart */}
         <div className="bg-lamaSky py-6 rounded-md flex-1 flex gap-4">
             <div className="w-1/3 px-2">
-            <Image src="https://images.pexels.com/photos/14634926/pexels-photo-14634926.jpeg" alt="" width={144} height={144} className="w-36 h-36 rounded-full object-cover"/>
+            <Image src="https://images.pexels.com/photos/14634926/pexels-photo-14634926.jpeg" 
+                alt="" 
+                width={144} 
+                height={144} 
+                className="w-36 h-36 rounded-full object-cover"
+            />
             </div>
             <div className="w-2/3 flex flex-col justify-between gap-4">
-                <h1 className="text-xl font-semibold">Mehretu Abraham</h1>
+            <div className="flex items-center gap-4">
+
+                <h1 className="text-xl font-semibold">Mehretu Abreham</h1>
+                <FormModal table="teacher" type="update" 
+                data={{
+                    id:1,
+                    username:"mehretu",
+                    email:"mehretu.abreham@gmail.com",
+                    password:"password",
+                    firstName:"Mehretu",
+                    lastName:"Abraham",
+                    phone:"+1 234 567 89",
+                    address:"1234 Main St, Anytown, USA",
+                    bloodType:"A+",
+                    birthday:"2000-01-01",
+                    sex:"male",
+                    img:"https://images.pexels.com/photos/14634926/pexels-photo-14634926.jpeg",
+                }}
+                />
+             </div>
+
                 <p className="text-sm text-gray-500">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
