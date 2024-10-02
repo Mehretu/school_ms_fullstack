@@ -17,11 +17,13 @@ model Student{
   id String @id
   username String @unique
   name String
+  surname String
   email String? @unique
   phone String? @unique
   address String
   img String?
   bloodType String
+  birthday DateTime
   sex UserSex
   createdAt DateTime @default(now())
   parentId String
@@ -38,11 +40,13 @@ model Teacher{
   id String @id
   username String @unique
   name String
+  surname String
   email String? @unique
   phone String? @unique
   address String
   img String?
   bloodType String
+  birthday DateTime
   sex UserSex
   createdAt DateTime @default(now())
   subjects Subject[]
@@ -54,6 +58,7 @@ model Parent{
   id String @id
   username String @unique
   name String
+  surname String
   email String? @unique
   phone String @unique
   address String
@@ -74,8 +79,8 @@ model Class{
   id Int @id @default(autoincrement())
   name String @unique
   capacity Int
-  supervisorId String
-  supervisor Teacher @relation(fields: [supervisorId], references: [id])
+  supervisorId String?
+  supervisor  Teacher?  @relation(fields: [supervisorId], references: [id])
   lessons Lesson[]
   students Student[]
   announcements Announcement[]
@@ -113,18 +118,19 @@ model Exam{
   startTime DateTime
   endTime DateTime
 
-  lesssonId Int
-  lesson Lesson @relation(fields: [lesssonId],references: [id])
+  lessonId Int
+  lesson Lesson @relation(fields: [lessonId],references: [id])
   results Result[]
 
 }
 model Assignment{
   id Int @id @default(autoincrement())
+  title String
   startDate DateTime
   dueDate DateTime
 
-  lesssonId Int
-  lesson Lesson @relation(fields: [lesssonId],references: [id])
+  lessonId Int
+  lesson Lesson @relation(fields: [lessonId],references: [id])
   results Result[]
 
 }
@@ -154,8 +160,8 @@ model Event{
   id Int @id @default(autoincrement())
   title String
   description String
-  startDate DateTime
-  endDate DateTime
+  startTime DateTime
+  endTime DateTime
   classId Int
   class Class @relation(fields: [classId],references: [id])
 
