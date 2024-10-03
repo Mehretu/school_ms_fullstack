@@ -101,7 +101,6 @@ const TeacherList = async ({
       if(value !== undefined)
       switch(key){
         case "classId":
-          
             query.lessons ={
               some:{
                 classId:parseInt(value),
@@ -110,6 +109,9 @@ const TeacherList = async ({
             break;
             case "search":
               query.name ={contains:value, mode:"insensitive"}
+              break;
+            default:
+              break;
           
           
       }

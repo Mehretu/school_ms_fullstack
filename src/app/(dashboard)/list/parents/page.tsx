@@ -88,6 +88,7 @@ const ParentList = async (
       switch(key){
             case "search":
               query.name ={contains:value, mode:"insensitive"}
+            break;
           
           
       }

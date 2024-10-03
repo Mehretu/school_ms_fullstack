@@ -117,7 +117,6 @@ model Exam{
   title String
   startTime DateTime
   endTime DateTime
-
   lessonId Int
   lesson Lesson @relation(fields: [lessonId],references: [id])
   results Result[]
